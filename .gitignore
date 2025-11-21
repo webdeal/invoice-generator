@@ -1,0 +1,50 @@
+# Composer
+/vendor/
+composer.lock
+
+# IDE
+/.idea/
+/.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# PHP
+*.cache
+.phpunit.result.cache
+.phpcs-cache
+.phpstan-cache
+/.phpunit.cache/
+
+# Generated files
+*.pdf
+*.log
+
+# Test output
+/build/
+/coverage/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Examples output
+/examples/*.pdf
+
+# Temporary files
+*.tmp
+*.bak
+*.old
+nul
+
+# Test files (not in tests/ directory)
+/test_*.php
+/test_*.pdf
+
+# Old legacy file
+/WFPfaktury.php
+
+# Claude
+/.claude/
