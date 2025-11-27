@@ -1,7 +1,6 @@
 {
   "name": "kenod/invoice-generator",
   "description": "Professional PHP library for generating PDF invoices, proforma invoices, and other accounting documents with QR payment codes, IBAN validation, and multi-language support",
-  "version": "3.0.0",
   "type": "library",
   "keywords": [
 	"invoice",
