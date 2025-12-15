@@ -1999,7 +1999,7 @@ final class InvoiceGenerator extends TCPDF {
 		$specificSymbol = $this->paymentDetails->getSpecificSymbol();
 
 		$qrData = Iban::getQRString([
-			'iban' => str_replace(' ', '', (string) $accountNumber[1]),
+			'iban' => Iban::getIban($this->bankAccountHelper($accountNumber[1])['number'], $this->bankAccountHelper($accountNumber[1])['code']),
 			'bic' => '',
 			'amount' => (string) $this->calculateTotal(),
 			'vs' => (string) ($variableSymbol[1] ?? ''),
@@ -2010,6 +2010,23 @@ final class InvoiceGenerator extends TCPDF {
 		if ($qrData !== null) {
 			$qrPayment = $this->settings->getQrPayment();
 			$this->write2DBarcode($qrData, 'QRCODE,L', $x, $y, $qrPayment['size'], $qrPayment['size']);
+		}
+	}
+
+	private function bankAccountHelper($accountNumber)
+	{
+		$slash = strpos($accountNumber, '/');
+
+		if ($slash) {
+			return [
+				'number' => substr($accountNumber, 0, $slash),
+				'code' => substr($accountNumber, $slash + 1),
+			];
+		} else {
+			return [
+				'number' => $accountNumber,
+				'code' => '',
+			];
 		}
 	}
 
